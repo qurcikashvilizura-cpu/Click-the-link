@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<title>იქნები ჩემი ვალენტინი? 💖</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.card {
+    text-align: center;
+    background: white;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
+}
+
+h1 { color: #ff3366; }
+
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<title>იქნები ჩემი ვალენტინი? 💖</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.card {
+    text-align: center;
+    background: white;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
+}
+
+h1 { color: #ff3366; }
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+#yes {
+    background: #ff3366;
+    color: white;
+}
+
+#no {
+    background: #ccc;
+    position: absolute;
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 28px;
+    display: none;
+    color: white;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.heart, .confetti {
+    position: absolute;
+    animation: float 4s linear infinite;
+}
+
+.heart { font-size: 24px; }
+
+.confetti {
+    width: 10px;
+    height: 10px;
+    background: gold;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-800px); opacity: 0; }
+}
+
+.flash {
+    animation: flash 0.2s alternate 6;
+}
+
+@keyframes flash {
+    from { background: black; }
+    to { background: white; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>იქნება ჩემი ვალენტინი? 💖</h1>
+    <button id="yes">კი 😍</button>
+    <button id="no">არა 😢</button>
+</div>
+
+<div class="message" id="message"></div>
+
+<script>
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+const message = document.getElementById("message");
+const body = document.body;
+
+let noClickCount = 0;
+
+
+// YES დაჭერის ეფექტი
+yesBtn.addEventListener("click", () => {
+
+    document.querySelector(".card").style.display = "none";
+
+    body.style.background = "linear-gradient(135deg, #ff3366, #ff99ac)";
+
+    message.style.display = "block";
+    message.innerHTML = "შენ თქვი კი! 💕💍✨<br>ანუ მეპატიჟები რესტორანში 🥰";
+
+    createHearts(50);
+    createConfetti(60);
+});
+
+// Multiple dramatic NO versions
+noBtn.addEventListener("click", () => {
+    noClickCount++;
+    message.style.display = "block";
+
+    if (noClickCount === 1) {
+        message.innerHTML = "არა? 😳 ...";
+    }
+    else if (noClickCount === 2) {
+        message.innerHTML = "მართლა არა?...";
+        body.style.background = "black";
+        body.style.color = "white";
+    }
+    else if (noClickCount === 3) {
+        message.innerHTML = "ეს უკვე კუკუობააა 😭 ";
+        body.classList.add("flash");
+    }
+    else if (noClickCount === 4) {
+        message.innerHTML = "კარგი… უბრალოდ 'კი' დააჭირე 😅";
+        yesBtn.style.fontSize = "30px";
+        yesBtn.style.padding = "25px 50px";
+    }
+    else {
+        message.innerHTML = "კუკი ქენი 😈💘";
+        noBtn.style.display = "none";
+        yesBtn.style.fontSize = "40px";
+        yesBtn.style.padding = "30px 60px";
+    }
+});
+
+// გულები
+function createHearts(num) {
+    for (let i = 0; i < num; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = window.innerHeight + "px";
+        heart.style.fontSize = (Math.random() * 30 + 20) + "px";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+    }
+}
+
+// კონფეტი
+function createConfetti(num) {
+    for (let i = 0; i < num; i++) {
+        let conf = document.createElement("div");
+        conf.className = "confetti";
+        conf.style.left = Math.random() * window.innerWidth + "px";
+        conf.style.top = window.innerHeight + "px";
+        conf.style.background = `hsl(${Math.random()*360},100%,50%)`;
+        conf.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(conf);
+
+        setTimeout(() => conf.remove(), 4000);
+    }
+}
+</script>
+
+</body>
+</html>
